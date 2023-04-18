@@ -27,3 +27,24 @@ function stringReversal(str) {
 }
 
 console.log(stringReversal("hello"));
+
+// reverse a string with a decrementing for loop
+function reversingAString(str) {
+  // create an empty string that will store the new string
+  let newString = "";
+
+  // create the for loop
+  /*
+    the starting point of the loop will be (str.length -1 ) which corresponds to the 
+    last character of the string "o"
+    As long as i is greater than or equal to 0 the loop will go on
+    we decrement i after each iteration
+    */
+  for (let i = str.length - 1; i >= 0; i--) {
+    newString += str[i];
+  }
+
+  return newString;
+}
+
+console.log(reversingAString("hello"));
