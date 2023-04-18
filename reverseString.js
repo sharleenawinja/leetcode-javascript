@@ -20,3 +20,10 @@ function reverseString(str) {
 }
 
 console.log(reverseString("hello"));
+
+//chaining the three methods together
+function stringReversal(str) {
+  return str.split("").reverse().join("");
+}
+
+console.log(stringReversal("hello"));
