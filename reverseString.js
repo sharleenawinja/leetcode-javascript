@@ -28,7 +28,7 @@ function stringReversal(str) {
 
 console.log(stringReversal("hello"));
 
-// reverse a string with a decrementing for loop
+//2.  reverse a string with a decrementing for loop
 function reversingAString(str) {
   // create an empty string that will store the new string
   let newString = "";
@@ -48,3 +48,52 @@ function reversingAString(str) {
 }
 
 console.log(reversingAString("hello"));
+
+//3. reverse a string with recursion
+
+// this method will use String.prototype.substr() method and the String.prototype.charAt() method
+// the substr() method returns the characters in a str beginning at the specified location through the specified number of characters
+"hello".substr(1); //ello
+"hello".substr(1, 3); //ell
+//the substr() method is deprecated and thus is no longer recommended
+/*though some browsers may still support it, it may have already been removed in the relevant wen standards,
+may be in the process of being dropped, or may be kept for compatibility purposes
+this feature may cease to work at any moment
+*/
+
+// the charAt() method returns the specified character from a string
+"hello".charAt(0); //h
+"hello".charAt(4); //0
+
+// the depth of the recursion is equal to the length of the string
+// this solution is not the best one and will be really slow if the string is very long and the stack size is of a major concern
+
+function reverseStringUsingRecursion(str) {
+  if (str === "")
+    //this is the terminal case that will end the recursion
+    return "";
+  else return reverseStringUsingRecursion(str.substr(1)) + str.charAt(0);
+
+  /*
+        first part of the recursion method 
+        you need to remember that you won't have just one call, you'll have several nested calls
+
+        Each call: str === "?"        	                  reverseString(str.subst(1))     + str.charAt(0)
+1st call – reverseString("Hello")   will return   reverseString("ello")           + "h"
+2nd call – reverseString("ello")    will return   reverseString("llo")            + "e"
+3rd call – reverseString("llo")     will return   reverseString("lo")             + "l"
+4th call – reverseString("lo")      will return   reverseString("o")              + "l"
+5th call – reverseString("o")       will return   reverseString("")               + "o"
+
+Second part of the recursion method
+The method hits the if condition and the most highly nested call returns immediately
+
+5th call will return reverseString("") + "o" = "o"
+4th call will return reverseString("o") + "l" = "o" + "l"
+3rd call will return reverseString("lo") + "l" = "o" + "l" + "l"
+2nd call will return reverserString("llo") + "e" = "o" + "l" + "l" + "e"
+1st call will return reverserString("ello") + "h" = "o" + "l" + "l" + "e" + "h" 
+         */
+}
+
+console.log(reverseStringUsingRecursion("hello"));
