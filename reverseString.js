@@ -99,3 +99,9 @@ The method hits the if condition and the most highly nested call returns immedia
 }
 
 console.log(reverseStringUsingRecursion("hello"));
+
+// using conditional operator
+function reversingString(str) {
+  return str === "" ? "" : reverseString(str.substr(1)) + str.charAt(0);
+}
+console.log(reversingString("hello"));
