@@ -69,9 +69,11 @@ this feature may cease to work at any moment
 // this solution is not the best one and will be really slow if the string is very long and the stack size is of a major concern
 
 function reverseStringUsingRecursion(str) {
+  //BASE CASE
   if (str === "")
     //this is the terminal case that will end the recursion (base case or termnal case in a recursion)
     return "";
+  //RECURSIVE CALL
   else return reverseStringUsingRecursion(str.substr(1)) + str.charAt(0);
 
   /*
