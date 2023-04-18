@@ -70,7 +70,7 @@ this feature may cease to work at any moment
 
 function reverseStringUsingRecursion(str) {
   if (str === "")
-    //this is the terminal case that will end the recursion
+    //this is the terminal case that will end the recursion (base case or termnal case in a recursion)
     return "";
   else return reverseStringUsingRecursion(str.substr(1)) + str.charAt(0);
 
