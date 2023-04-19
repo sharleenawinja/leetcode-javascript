@@ -11,7 +11,7 @@ class MySet {
   //this method will check for the presence of an element an and return true or false
   //this makes sure that there are no duplicates in the array
   has = (element) => {
-    return collection.indexOf(element) !== -1;
+    return this.collection.indexOf(element) !== -1;
   };
 
   //this method will return all the values in the set
@@ -28,7 +28,7 @@ class MySet {
     return false;
   };
 
-  //this method will remove an element from the set
+  //this method will remove an element from the set => es6 uses delete instead of remove
   remove = (element) => {
     if (this.has(element)) {
       index = collection.indexOf(element);
@@ -37,7 +37,92 @@ class MySet {
     }
     return false;
   };
+
+  //this method will return the size of the collection => es6 size is a property not a method
+  size = () => {
+    return this.collection.length;
+  };
+
+  //next two methods make it possible to work with two different sets
+
+  //this method will return the union of two sets
+  // it will combine the sets but leave out any duplicates during the combination
+  union = (anotherSet) => {
+    let unionSet = new MySet();
+    let firstSet = this.values();
+    let secondSet = anotherSet.values();
+    firstSet.forEach((element) => {
+      unionSet.add(element);
+    });
+    secondSet.forEach((element) => {
+      unionSet.add(element);
+    });
+    // for set data structure the values dont matter hence values can be returned in any order
+    return unionSet;
+  };
+
+  //this method will return the intersection of two sets as a new set => all items that are in both sets
+  intersection = (otherSet) => {
+    let intersectionSet = new MySet();
+    let firstSet = this.values();
+    firstSet.forEach((element) => {
+      if (otherSet.has(element)) {
+        intersectionSet.add(element);
+      }
+    });
+
+    return intersectionSet;
+  };
+
+  //this method will return the difference of two sets as a new set => all items that are in one set but not in the other set
+  difference = (otherSet) => {
+    let differenceSet = new MySet();
+    let firstSet = this.values();
+    firstSet.forEach((element) => {
+      if (!otherSet.has(element)) {
+        differenceSet.add(element);
+      }
+    });
+  };
+
+  //this method will test if the set is a subset of a different set
+  subset = (otherSet) => {
+    let firstSet = this.values();
+    // the every method tests whether all elements in the array pass the test implemented by the provided function
+    // it returns a boolean value (returns truthy if all elements in the array pass the test in the callback fuction)
+    // parameters => 1. callback functiion =>  a function to execute for every element in the array
+    // It should return a truthy value to indicate the element passes the test, and a falsy value otherwise. The function is called with the following arguments:
+    // a. element => the current element being processef by the array
+    // b. index => the index of the current element being processed in the array
+    // array => the array the every method was called upon
+    return firstSet.every((value) => {
+      return otherSet.has(value);
+    });
+  };
 }
+
+const setA = new MySet();
+const setB = new MySet();
+setA.add("a");
+setB.add("b");
+setB.add("c");
+setB.add("a");
+setB.add("d");
+console.log("a subset of b?", setA.subset(setB));
+console.log("intersection", setA.intersection(setB).values());
+
+//using built in set method
+const setC = new Set();
+const setD = new Set();
+setC.add("a");
+setD.add("b");
+setD.add("c");
+setD.add("a");
+setD.add("d");
+console.log("values", setD.values()); //instead of returning an array it returns an iterator which you can still iterate through
+setD.delete("a");
+console.log("has a after deleting?", setD.has("a"));
+console.log("add d which it already has?", setD.add("d")); //this will not return true or false whether the element has been added or not, it will instead return the full set
 
 // SLICE, SPLICE AND SPLIT METHODS
 // SLICE
