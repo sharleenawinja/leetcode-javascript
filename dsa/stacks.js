@@ -43,3 +43,57 @@ const checkPalindrome = () => {
 };
 
 checkPalindrome();
+
+// another implementation of stacks in javascript
+class Stack {
+  constructor() {
+    this.count = 0;
+    this.storage = {};
+  }
+
+  push = (value) => {
+    // adding an element to the end of the stack
+    this.storage[this.count] = value;
+    this.count++;
+  };
+
+  pop = () => {
+    if (this.count === 0) {
+      return undefined; //returning undefined because a count of zero means there is nothing in the stack
+    }
+
+    // removes an element from the end of the stack
+    this.count--;
+    const result = this.storage[this.count];
+    // delete operator removes a property from an object
+    // if the property's value is an object and there are no more referenced to the object, the
+    // object held by that property is eventually released automatically
+    // parameters => object - name of the object or an expression that evaluates to an object; property - property to delete
+    // returns true or false
+    const deletion = delete this.storage[this.count];
+    console.log("deletion", deletion);
+    return result;
+  };
+
+  size = () => {
+    // return size of the stack
+    return this.count;
+  };
+
+  peek = () => {
+    // returns value at the end of the stack but will not remove the value from the stack, unlike the pop method
+    return this.storage[this.count - 1];
+  };
+}
+
+const myStack = new Stack();
+myStack.push(1);
+myStack.push(2);
+console.log("peek", myStack.peek());
+console.log("size", myStack.size());
+console.log("pop", myStack.pop());
+console.log("size", myStack.size());
+console.log("peek", myStack.peek());
+myStack.push("stacks");
+console.log("peek", myStack.peek());
+console.log("size", myStack.size());
