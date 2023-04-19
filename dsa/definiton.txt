@@ -1,0 +1,14 @@
+Data structure =>  a data structure is defined as a particular way of storing and organizing data in our devices to use the data efficiently and effectively
+The main idea behind data structures is to minimize the time and space complexities.
+An efficient data structure takes minimum memory and requires minimum time to execute data
+
+Time complexity => used to measure the amount of time required to execute code 
+Space complexity => space complexity means the amount of space required to execute successfully the functionalities of the code 
+Auxiliary space => the extra space used in the program other than the input data structure
+
+Both time and space complexities are measured with respect to the input parameters.
+But here arises a problem
+The time required for executing code depends on several factors, such as:
+    a. the number of operations being performed in the program
+    b. the speed of the device, and also
+    c. the speed of data transfered is being executed on an online platform
