@@ -43,7 +43,7 @@ testQueue.enqueue("b");
 testQueue.enqueue("c");
 testQueue.print();
 console.log(testQueue.size());
-console.log(testQueue.dequeue());
+testQueue.dequeue();
 console.log(testQueue.size());
 console.log(testQueue.front());
 console.log(testQueue.isEmpty());
