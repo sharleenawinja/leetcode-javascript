@@ -86,3 +86,16 @@ const thirdGetLargestNumber = (numArray) => {
 };
 
 console.log(thirdGetLargestNumber([4, 5, 1, 3])); // Output: 1
+
+/**
+ * write a function that returns a promise that resolves
+ * after a number of milliseconds
+ */
+const wait = (milliseconds) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+};
+wait(1000).then(() => {
+  console.log("One second has elapsed.");
+});
