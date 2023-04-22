@@ -52,3 +52,37 @@ console.log(
     { b: 2 },
   ])
 );
+
+/**
+ * write a function that takes an array of numbers
+ * and returns the index of the largest number
+ */
+const getLargestNumber = (numArray) => {
+  let largestIndex = 0;
+  for (let i = 1; i < numArray.length; i++) {
+    if (numArray[i] > numArray[largestIndex]) {
+      largestIndex = i;
+    }
+  }
+  return largestIndex;
+};
+console.log(getLargestNumber([4, 5, 1, 3]));
+
+const secondGetLargestNumber = (numArray) => {
+  const largestNum = Math.max(...numArray); // get the largest number in the array
+  return numArray.indexOf(largestNum); // return the index of the largest number
+};
+
+console.log(secondGetLargestNumber([4, 5, 1, 3])); // Output: 1
+
+const thirdGetLargestNumber = (numArray) => {
+  const largestIndex = numArray.reduce(
+    (maxIndex, currentNum, currentIndex, array) => {
+      return currentNum > array[maxIndex] ? currentIndex : maxIndex;
+    },
+    0
+  );
+  return largestIndex;
+};
+
+console.log(thirdGetLargestNumber([4, 5, 1, 3])); // Output: 1
