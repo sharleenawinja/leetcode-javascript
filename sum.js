@@ -20,3 +20,35 @@ const sum = (...args) => {
   return result;
 };
 console.log(sum(1, 2, 3, 4, 5));
+
+/**
+ * write a function that takes two strings A and B
+ * and returns whether B is in A in a case insensitive way
+ */
+
+const stringIncludes = (stringA, stringB) => {
+  stringLower = stringB.toLowerCase();
+  return stringA.includes(stringLower);
+};
+console.log(stringIncludes("Hello world, welcome to the universe.", "world"));
+
+/**
+ * write a function that takes an array of objects
+ *and returns an array of the objects' "name" only if the property exists
+ *
+ */
+
+function getName(objectArray) {
+  const newArray = objectArray.filter((obj) => obj.hasOwnProperty("name"));
+  return newArray;
+}
+console.log(
+  getName([
+    { a: 1 },
+    { name: "Jane" },
+    {},
+    { name: "Mark" },
+    { name: "Sophia" },
+    { b: 2 },
+  ])
+);
