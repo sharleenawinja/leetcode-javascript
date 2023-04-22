@@ -111,17 +111,17 @@ class BinarySearchTree {
       if (data === node.data) {
         // node has no children
         if (node.left === null && node.right === null) {
-          return null;
+          return null; //returning null means setting the node that had that data to null
         }
 
         // node has no left child
         if (node.left === null) {
-          return node.right;
+          return node.right; //replace node with the node on the right
         }
 
         // node has no right child
         if (node.right === null) {
-          return node.left;
+          return node.left; //replace node with the node on the left
         }
 
         // node has two children
