@@ -40,3 +40,31 @@ function threeSumClosest(nums, target) {
   }
   return result;
 }
+
+function threeSumClosest(nums, target) {
+  nums.sort((a, b) => a - b);
+  let result = Infinity;
+  let minDiff = Infinity;
+  const diffMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      const diff = target - nums[i] - nums[j];
+      if (diffMap.has(diff)) {
+        const k = diffMap.get(diff);
+        const sum = nums[i] + nums[j] + nums[k];
+        const diff = Math.abs(sum - target);
+        if (diff < minDiff) {
+          minDiff = diff;
+          result = sum;
+        }
+      }
+    }
+    for (let k = i + 1; k < nums.length; k++) {
+      const diff = target - nums[i] - nums[k];
+      if (!diffMap.has(diff)) {
+        diffMap.set(diff, k);
+      }
+    }
+  }
+  return result;
+}
