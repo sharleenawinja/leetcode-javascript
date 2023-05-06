@@ -38,3 +38,7 @@ function searchInsert(nums, target) {
   }
   return left;
 }
+
+function searchInsert(nums, target) {
+  return nums.findIndex((num) => num >= target);
+}
