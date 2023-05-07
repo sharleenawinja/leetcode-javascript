@@ -14,3 +14,37 @@ function reverseString(str) {
 
 var input = "Hello, World!";
 console.log(reverseString(input)); // Output: "!dlroW ,olleH"
+
+//second solution
+class Stack {
+  constructor() {
+    this.data = [];
+  }
+
+  push(item) {
+    this.data.push(item);
+  }
+
+  pop() {
+    return this.data.pop();
+  }
+
+  isEmpty() {
+    return this.data.length === 0;
+  }
+}
+
+function reverseString(str) {
+  var stack = new Stack();
+  for (var i = 0; i < str.length; i++) {
+    stack.push(str[i]);
+  }
+  var reversedStr = "";
+  while (!stack.isEmpty()) {
+    reversedStr += stack.pop();
+  }
+  return reversedStr;
+}
+
+var input = "Hello, World!";
+console.log(reverseString(input)); // Output: "!dlroW ,olleH"
