@@ -74,3 +74,14 @@ function reverseString(str) {
 
 var input = "Hello, World!";
 console.log(reverseString(input)); // Output: "!dlroW ,olleH"
+
+//solution 5
+function reverseString(str) {
+  if (str === "") {
+    return "";
+  }
+  return reverseString(str.substr(1)) + str.charAt(0);
+}
+
+var input = "Hello, World!";
+console.log(reverseString(input)); // Output: "!dlroW ,olleH"
