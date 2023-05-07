@@ -61,3 +61,16 @@ function reverseString(str) {
 
 var input = "Hello, World!";
 console.log(reverseString(input)); // Output: "!dlroW ,olleH"
+
+//solution 4
+function reverseString(str) {
+  var stack = [...str];
+  var reversedStr = "";
+  while (stack.length > 0) {
+    reversedStr += stack.pop();
+  }
+  return reversedStr;
+}
+
+var input = "Hello, World!";
+console.log(reverseString(input)); // Output: "!dlroW ,olleH"
