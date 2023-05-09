@@ -46,3 +46,19 @@ function findArraySum(arr) {
 const nums3 = [2, 4, 6, 8, 10];
 const arraySum = findArraySum(nums);
 console.log(arraySum); // Output: 30
+
+// Remove duplicates from an array.
+function removeDuplicates(arr) {
+  const uniqueArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!uniqueArray.includes(arr[i])) {
+      uniqueArray.push(arr[i]);
+    }
+  }
+  return uniqueArray;
+}
+
+// Example usage:
+const nums4 = [1, 2, 2, 3, 4, 4, 5];
+const uniqueArray = removeDuplicates(nums);
+console.log(uniqueArray); // Output: [1, 2, 3, 4, 5]
