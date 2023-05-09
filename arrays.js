@@ -62,3 +62,18 @@ function removeDuplicates(arr) {
 const nums4 = [1, 2, 2, 3, 4, 4, 5];
 const uniqueArray = removeDuplicates(nums);
 console.log(uniqueArray); // Output: [1, 2, 3, 4, 5]
+
+//  Find the average (mean) of all elements in an array.
+function findArrayAverage(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  const average = sum / arr.length;
+  return average;
+}
+
+// Example usage:
+const nums5 = [2, 4, 6, 8, 10];
+const arrayAverage = findArrayAverage(nums);
+console.log(arrayAverage); // Output: 6
