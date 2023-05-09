@@ -32,3 +32,17 @@ function reverseArray(arr) {
 const nums2 = [1, 2, 3, 4, 5];
 const reversedArray = reverseArray(nums);
 console.log(reversedArray); // Output: [5, 4, 3, 2, 1]
+
+// Find the sum of all elements in an array.
+function findArraySum(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+
+// Example usage:
+const nums3 = [2, 4, 6, 8, 10];
+const arraySum = findArraySum(nums);
+console.log(arraySum); // Output: 30
