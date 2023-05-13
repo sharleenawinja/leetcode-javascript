@@ -99,3 +99,20 @@ function isPalindrome(str) {
   }
   return str === reversedString;
 }
+
+// Given a list of numbers, find the maximum value.
+function findMax(numbers) {
+  const stack = [];
+  for (const number of numbers) {
+    stack.push(number);
+  }
+  let max = stack[0];
+  while (!stack.isEmpty()) {
+    if (stack.peek() > max) {
+      max = stack.pop();
+    } else {
+      stack.pop();
+    }
+  }
+  return max;
+}
