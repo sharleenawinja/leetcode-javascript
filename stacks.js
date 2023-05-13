@@ -116,3 +116,20 @@ function findMax(numbers) {
   }
   return max;
 }
+
+// Given a list of numbers, find the minimum value.
+function findMin(numbers) {
+  const stack = [];
+  for (const number of numbers) {
+    stack.push(number);
+  }
+  let min = stack[0];
+  while (!stack.isEmpty()) {
+    if (stack.peek() < min) {
+      min = stack.pop();
+    } else {
+      stack.pop();
+    }
+  }
+  return min;
+}
