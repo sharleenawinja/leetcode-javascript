@@ -146,3 +146,18 @@ function sumNumbers(numbers) {
   }
   return sum;
 }
+
+// Given a string of parentheses, check if it is balanced.
+function isBalanced(str) {
+  const stack = [];
+  for (const char of str) {
+    if (char === "(") {
+      stack.push(char);
+    } else if (char === ")") {
+      if (stack.isEmpty() || stack.pop() !== "(") {
+        return false;
+      }
+    }
+  }
+  return stack.isEmpty();
+}
