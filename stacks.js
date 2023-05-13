@@ -85,3 +85,17 @@ function reverseString(str) {
 
 var input = "Hello, World!";
 console.log(reverseString(input)); // Output: "!dlroW ,olleH"
+
+// Given a string, check if it is a palindrome.
+
+function isPalindrome(str) {
+  const stack = [];
+  for (const char of str) {
+    stack.push(char);
+  }
+  const reversedString = "";
+  while (!stack.isEmpty()) {
+    reversedString += stack.pop();
+  }
+  return str === reversedString;
+}
