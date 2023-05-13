@@ -133,3 +133,16 @@ function findMin(numbers) {
   }
   return min;
 }
+
+// Given a list of numbers, find the sum of all the numbers.
+function sumNumbers(numbers) {
+  const stack = [];
+  for (const number of numbers) {
+    stack.push(number);
+  }
+  let sum = 0;
+  while (!stack.isEmpty()) {
+    sum += stack.pop();
+  }
+  return sum;
+}
