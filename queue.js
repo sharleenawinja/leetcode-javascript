@@ -9,3 +9,15 @@ function sortQueue(queue) {
     queue.enqueue(elements[i]);
   }
 }
+
+// find specific element in a queue
+function findElementInQueue(queue, element) {
+  let currentNode = queue.head;
+  while (currentNode !== null) {
+    if (currentNode.element === element) {
+      return currentNode;
+    }
+    currentNode = currentNode.next;
+  }
+  return null;
+}
