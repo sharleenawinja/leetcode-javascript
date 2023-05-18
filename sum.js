@@ -117,3 +117,19 @@ function lengthOfLongestSubstring(s) {
 
   return maxLength;
 }
+
+// Subsets
+function subsets(nums) {
+  const result = [];
+  backtrack([], 0);
+  return result;
+
+  function backtrack(currSet, start) {
+    result.push(currSet.slice());
+    for (let i = start; i < nums.length; i++) {
+      currSet.push(nums[i]);
+      backtrack(currSet, i + 1);
+      currSet.pop();
+    }
+  }
+}
