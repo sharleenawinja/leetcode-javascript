@@ -125,3 +125,31 @@ function maxDepth(root) {
 
   return Math.max(leftDepth, rightDepth) + 1;
 }
+
+// Validate Binary Search Tree
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function isValidBST(root) {
+  return isValidBSTHelper(root, null, null);
+}
+
+function isValidBSTHelper(node, min, max) {
+  if (node === null) {
+    return true;
+  }
+
+  if ((min !== null && node.val <= min) || (max !== null && node.val >= max)) {
+    return false;
+  }
+
+  return (
+    isValidBSTHelper(node.left, min, node.val) &&
+    isValidBSTHelper(node.right, node.val, max)
+  );
+}
