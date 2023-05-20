@@ -105,3 +105,23 @@ function reversingString(str) {
   return str === "" ? "" : reverseString(str.substr(1)) + str.charAt(0);
 }
 console.log(reversingString("hello"));
+
+// Maximum Depth of Binary Tree
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function maxDepth(root) {
+  if (root === null) {
+    return 0;
+  }
+
+  const leftDepth = maxDepth(root.left);
+  const rightDepth = maxDepth(root.right);
+
+  return Math.max(leftDepth, rightDepth) + 1;
+}
