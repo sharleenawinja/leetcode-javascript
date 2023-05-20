@@ -153,3 +153,43 @@ function isValidBSTHelper(node, min, max) {
     isValidBSTHelper(node.right, node.val, max)
   );
 }
+
+//  Binary Tree Level Order Traversal
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function levelOrder(root) {
+  if (root === null) {
+    return [];
+  }
+
+  const queue = [root];
+  const result = [];
+
+  while (queue.length > 0) {
+    const levelSize = queue.length;
+    const currentLevel = [];
+
+    for (let i = 0; i < levelSize; i++) {
+      const currentNode = queue.shift();
+      currentLevel.push(currentNode.val);
+
+      if (currentNode.left !== null) {
+        queue.push(currentNode.left);
+      }
+
+      if (currentNode.right !== null) {
+        queue.push(currentNode.right);
+      }
+    }
+
+    result.push(currentLevel);
+  }
+
+  return result;
+}
