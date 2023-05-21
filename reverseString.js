@@ -216,3 +216,27 @@ function invertTree(root) {
 
   return root;
 }
+
+// Path Sum
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function hasPathSum(root, targetSum) {
+  if (root === null) {
+    return false;
+  }
+
+  if (root.left === null && root.right === null && root.val === targetSum) {
+    return true;
+  }
+
+  const left = hasPathSum(root.left, targetSum - root.val);
+  const right = hasPathSum(root.right, targetSum - root.val);
+
+  return left || right;
+}
