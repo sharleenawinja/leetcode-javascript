@@ -103,3 +103,27 @@ function reverse(x) {
 }
 
 console.log(reverse(123));
+
+// Determine whether an integer x is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+// Example:
+// Input: x = 121
+// Output: true
+
+function isPalindrome(x) {
+  if (x < 0) {
+    return false;
+  }
+
+  let reversed = 0;
+  let original = x;
+
+  while (x > 0) {
+    reversed = reversed * 10 + (x % 10);
+    x = Math.floor(x / 10);
+  }
+
+  return reversed === original;
+}
+
+console.log(isPalindrome(121));
