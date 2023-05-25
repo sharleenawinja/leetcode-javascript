@@ -77,3 +77,29 @@ function findArrayAverage(arr) {
 const nums5 = [2, 4, 6, 8, 10];
 const arrayAverage = findArrayAverage(nums);
 console.log(arrayAverage); // Output: 6
+
+// Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+// Example:
+// Input: x = 123
+// Output: 321
+
+function reverse(x) {
+  const isNegative = x < 0;
+  let reversed = 0;
+
+  x = Math.abs(x);
+
+  while (x > 0) {
+    reversed = reversed * 10 + (x % 10);
+    x = Math.floor(x / 10);
+  }
+
+  if (reversed > Math.pow(2, 31) - 1) {
+    return 0;
+  }
+
+  return isNegative ? -reversed : reversed;
+}
+
+console.log(reverse(123));
