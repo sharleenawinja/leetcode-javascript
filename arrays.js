@@ -155,3 +155,25 @@ function removeDuplicates(nums) {
 const num = [1, 1, 2];
 console.log(removeDuplicates(num));
 console.log(num);
+
+// Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+// Example:
+// Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+// Output: 6
+// Explanation: The contiguous subarray [4, -1, 2, 1] has the largest sum = 6.
+
+function maxSubArray(nums) {
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    maxSum = Math.max(maxSum, currentSum);
+  }
+
+  return maxSum;
+}
+
+// Test case
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // Output: 6
