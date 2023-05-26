@@ -177,3 +177,30 @@ function maxSubArray(nums) {
 
 // Test case
 console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // Output: 6
+
+// Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+// Example:
+// Input: nums1 = [1, 2, 2, 1], nums2 = [2, 2]
+// Output: [2, 2]
+
+function intersect(nums1, nums2) {
+  const map = {};
+  const intersection = [];
+
+  for (const num of nums1) {
+    map[num] = (map[num] || 0) + 1;
+  }
+
+  for (const num of nums2) {
+    if (map[num] && map[num] > 0) {
+      intersection.push(num);
+      map[num]--;
+    }
+  }
+
+  return intersection;
+}
+
+// Test case
+console.log(intersect([1, 2, 2, 1], [2, 2])); // Output: [2, 2]
