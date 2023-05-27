@@ -204,3 +204,34 @@ function intersect(nums1, nums2) {
 
 // Test case
 console.log(intersect([1, 2, 2, 1], [2, 2])); // Output: [2, 2]
+
+// You are climbing a staircase that has n steps. You can take either one or two steps at a time. Return the number of distinct ways to climb to the top.
+
+// Example:
+// Input: n = 4
+// Output: 5
+// Explanation: There are five distinct ways to climb to the top.
+// 1. 1 step + 1 step + 1 step + 1 step
+// 2. 1 step + 2 steps + 1 step
+// 3. 2 steps + 1 step + 1 step
+// 4. 1 step + 1 step + 2 steps
+// 5. 2 steps + 2 steps
+
+function climbStairs(n) {
+  if (n === 1) {
+    return 1;
+  }
+
+  const dp = new Array(n + 1);
+  dp[1] = 1;
+  dp[2] = 2;
+
+  for (let i = 3; i <= n; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2];
+  }
+
+  return dp[n];
+}
+
+// Test case
+console.log(climbStairs(4)); // Output: 5
