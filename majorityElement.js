@@ -10,6 +10,7 @@
 // Input: nums = [2,2,1,1,1,2,2]
 // Output: 2
 
+// method one using a hashmap
 function majorityElement(nums) {
   const map = new Map();
   const majorityCount = Math.floor(nums.length / 2);
@@ -20,4 +21,11 @@ function majorityElement(nums) {
       return num;
     }
   }
+}
+
+// method two
+// sorting the array
+function majorityElement(nums) {
+  nums.sort((a, b) => a - b);
+  return nums[Math.floor(nums.length / 2)];
 }
