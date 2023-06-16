@@ -317,3 +317,51 @@ function productExceptSelf(nums) {
 
 // Test case
 console.log(productExceptSelf([1, 2, 3, 4])); // Output: [24, 12, 8, 6]
+
+// Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. If the target is not found in the array, return [-1, -1].
+
+// Example:
+// Input: nums = [5, 7, 7, 8, 8, 10], target = 8
+// Output: [3, 4]
+
+// Solution:
+function searchRange(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  let start = -1;
+  let end = -1;
+
+  // Find the starting position
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) {
+      start = mid;
+      right = mid - 1;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  // Find the ending position
+  left = 0;
+  right = nums.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) {
+      end = mid;
+      left = mid + 1;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return [start, end];
+}
+
+// Test case
+console.log(searchRange([5, 7, 7, 8, 8, 10], 8)); // Output: [3, 4]
