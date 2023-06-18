@@ -425,3 +425,42 @@ function longestConsecutive(nums) {
 
 // Test case
 console.log(longestConsecutive([100, 4, 200, 1, 3, 2])); // Output: 4
+
+// Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+
+// The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+
+// Example:
+// Input: candidates = [2, 3, 6, 7], target = 7
+// Output: [[2, 2, 3], [7]]
+
+// Solution:
+
+function combinationSum(candidates, target) {
+  const result = [];
+
+  function backtrack(combination, startIndex, currentSum) {
+    if (currentSum === target) {
+      result.push([...combination]);
+      return;
+    }
+
+    if (currentSum > target) {
+      return;
+    }
+
+    for (let i = startIndex; i < candidates.length; i++) {
+      combination.push(candidates[i]);
+      backtrack(combination, i, currentSum + candidates[i]);
+      combination.pop();
+    }
+  }
+
+  backtrack([], 0, 0);
+
+  return result;
+}
+
+// Test case
+console.log(combinationSum([2, 3, 6, 7], 7));
+// Output: [[2, 2, 3], [7]]
