@@ -195,3 +195,31 @@ function rotate(matrix) {
     matrix[i].reverse();
   }
 }
+
+// Given a string s, find the length of the longest substring without repeating characters.
+
+// Example:
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The longest substring without repeating characters is "abc", which has a length of 3.
+function lengthOfLongestSubstring(s) {
+  let maxLength = 0;
+  let start = 0;
+  const map = new Map();
+
+  for (let end = 0; end < s.length; end++) {
+    const char = s[end];
+
+    if (map.has(char)) {
+      start = Math.max(start, map.get(char) + 1);
+    }
+
+    map.set(char, end);
+    maxLength = Math.max(maxLength, end - start + 1);
+  }
+
+  return maxLength;
+}
+
+// Test case
+console.log(lengthOfLongestSubstring("abcabcbb")); // Output: 3
