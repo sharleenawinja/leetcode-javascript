@@ -288,3 +288,38 @@ function productExceptSelf(nums) {
 
 // Test case
 console.log(productExceptSelf([1, 2, 3, 4])); // Output: [24, 12, 8, 6]
+
+// Given a string s, return the longest palindromic substring in s.
+
+// Example:
+// Input: s = "babad"
+// Output: "bab"
+// Note: "aba" is also a valid answer.
+
+function longestPalindrome(s) {
+  let start = 0;
+  let maxLength = 0;
+
+  function expandAroundCenter(left, right) {
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+      left--;
+      right++;
+    }
+
+    const length = right - left - 1;
+    if (length > maxLength) {
+      maxLength = length;
+      start = left + 1;
+    }
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    expandAroundCenter(i, i); // For odd-length palindromes
+    expandAroundCenter(i, i + 1); // For even-length palindromes
+  }
+
+  return s.substring(start, start + maxLength);
+}
+
+// Test case
+console.log(longestPalindrome("babad")); // Output: "bab"
