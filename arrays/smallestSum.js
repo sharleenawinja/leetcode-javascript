@@ -34,3 +34,31 @@ const smallestPairs = (nums1, nums2, k) => {
 console.log(smallestPairs([1, 1, 2], [1, 2, 3], 2));
 console.log(smallestPairs([1, 7, 11], [2, 4, 6], 3));
 console.log(smallestPairs());
+
+// second approach
+// using min heap
+const smallestSum = (nums1, nums2, k) => {
+  const heap = new MinHeap();
+
+  // Populate the min-heap with the k smallest pairs
+  for (let i = 0; i < Math.min(nums1.length, k); i++) {
+    for (let j = 0; j < Math.min(nums2.length, k); j++) {
+      const sum = nums1[i] + nums2[j];
+      heap.insert([nums1[i], nums2[j], sum]);
+
+      // Limit the size of the heap to k
+      if (heap.size() > k) {
+        heap.extractMin();
+      }
+    }
+  }
+
+  // Extract the k smallest pairs from the min-heap
+  const result = [];
+  while (!heap.isEmpty()) {
+    const [num1, num2, sum] = heap.extractMin();
+    result.push([num1, num2]);
+  }
+
+  return result;
+};
